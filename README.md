@@ -28,9 +28,9 @@ $$A^\top A + \tau I \approx L L^\top$$.
 
 Typically leads to much faster convergence.
 
-The script automatically:
+The script:
 
-- tests multiple regularization values \(\tau\)  
+- tests multiple regularization values $\tau$  
 - switches between  
   - `type = 'nofill'` (very sparse, weaker)  
   - `type = 'ict'` with `droptol` (threshold-based dropping, stronger)  
@@ -41,19 +41,3 @@ The script automatically:
 - Stronger reduction of condition number  
 - Often yields noticeably fewer iterations  
 - Requires tuning of `tau`, `type`, and `droptol`
-
----
-
-## Output
-
-The script displays:
-
-- The true phantom  
-- Reconstructions from:
-  - **CG**
-  - **Jacobi PCG**
-  - **IC-PCG**  
-- A semilog plot of **relative residual history**, clearly showing how preconditioning changes convergence behavior.
-
----
-
