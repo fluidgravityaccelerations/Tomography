@@ -1,56 +1,36 @@
 # Tomography
 
+## Preconditioning for CT Reconstruction (`preconditioning_CAT.m`)
 
-# MATLAB Demo: Preconditioning for CT Reconstruction
-
-This repository contains a MATLAB demo illustrating the role of **preconditioning** when solving linear systems arising in **X-ray computed tomography (CT)**. The example reconstructs a Shepp–Logan phantom from simulated Radon projections, forms the normal equations  
+Role of **preconditioning** when solving linear systems arising in **X-ray computed tomography (CT)**. The algorithm reconstructs a Shepp–Logan phantom from simulated Radon projections, forms the normal equations  
 \[
 (A^\top A)\,x = A^\top b,
 \]  
-and solves them using **Conjugate Gradient** (CG) with three different preconditioning strategies.
-
-The goal is to show students how preconditioning affects convergence speed, stability, and reconstruction quality.
-
----
-
-## Features
-
-- Builds an explicit system matrix \(A\) using MATLAB’s `radon` operator  
-- Solves the CT inverse problem using:  
-  - **Unpreconditioned CG**  
-  - **Jacobi-preconditioned CG**  
-  - **Incomplete Cholesky (IC) preconditioned CG**  
-- Uses auto-adaptive strategies to stabilize `ichol()` for ill-conditioned CT matrices  
-- Compares reconstructions visually  
-- Plots **residual histories** to highlight convergence improvements
+and solves it using **Conjugate Gradient** (CG) with two different preconditioning strategies:
+  - **Jacobi-preconditioned CG** 
+  - **Incomplete Cholesky (IC) preconditioned CG** - it uses auto-adaptive strategies to stabilize `ichol()` for ill-conditioned CT matrices  
 
 ---
 
-## Preconditioning Strategies
-
-### 1. Jacobi Preconditioning  
+### Jacobi Preconditioning 
 A simple diagonal scaling based on the diagonal of \(A^\top A\):
 
 \[
 M_{\text{Jac}}^{-1} = \mathrm{diag}(A^\top A)^{-1}.
 \]
 
-**Effects:**
-
-- Normalizes the magnitude of the unknowns  
-- Usually provides mild acceleration  
-- Very cheap and robust
+Usually provides a mild accelaration, but it is very cheap.
 
 ---
 
-### 2. Incomplete Cholesky (IC) Preconditioning  
+### Incomplete Cholesky (IC) Preconditioning  
 Builds a sparse approximation of the Cholesky factorization:
 
 \[
 A^\top A + \tau I \approx L L^\top.
 \]
 
-This preconditioner significantly improves eigenvalue clustering, which typically leads to much faster CG convergence.
+Typically leads to much faster convergence.
 
 The script automatically:
 
