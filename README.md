@@ -3,9 +3,9 @@
 ## Preconditioning for CT Reconstruction (`preconditioning_CAT.m`)
 
 Role of **preconditioning** when solving linear systems arising in **X-ray computed tomography (CT)**. The algorithm reconstructs a Shepp–Logan phantom from simulated Radon projections, forms the normal equations  
-\[
-(A^\top A)\,x = A^\top b,
-\]  
+
+$$(A^\top A)\,x = A^\top b$$,
+
 and solves it using **Conjugate Gradient** (CG) with two different preconditioning strategies:
   - **Jacobi-preconditioned CG** 
   - **Incomplete Cholesky (IC) preconditioned CG** - it uses auto-adaptive strategies to stabilize `ichol()` for ill-conditioned CT matrices  
