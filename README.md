@@ -15,9 +15,7 @@ and solves it using **Conjugate Gradient** (CG) with two different preconditioni
 ### Jacobi Preconditioning 
 A simple diagonal scaling based on the diagonal of \(A^\top A\):
 
-\[
-M_{\text{Jac}}^{-1} = \mathrm{diag}(A^\top A)^{-1}.
-\]
+$$M_{\text{Jac}}^{-1} = \mathrm{diag}(A^\top A)^{-1}$$.
 
 Usually provides a mild accelaration, but it is very cheap.
 
@@ -26,9 +24,7 @@ Usually provides a mild accelaration, but it is very cheap.
 ### Incomplete Cholesky (IC) Preconditioning  
 Builds a sparse approximation of the Cholesky factorization:
 
-\[
-A^\top A + \tau I \approx L L^\top.
-\]
+$$A^\top A + \tau I \approx L L^\top$$.
 
 Typically leads to much faster convergence.
 
